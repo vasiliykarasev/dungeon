@@ -6,7 +6,9 @@ namespace dungeon {
 
 BloomFilter::BloomFilter(size_t num_hash_functions, size_t bit_length)
     : num_hash_functions_(num_hash_functions), bit_length_(bit_length) {
-  CHECK_EQ(0, bit_length % 8) << "Bit length must be divisible by 8";
+  CHECK_EQ(0, bit_length_ % 8) << "Bit length must be divisible by 8";
+  CHECK_GE(bit_length_, 8);
+  CHECK_GT(num_hash_functions_, 0);
   bitset_ = std::vector<uint8_t>(bit_length / 8, 0);
 }
 
