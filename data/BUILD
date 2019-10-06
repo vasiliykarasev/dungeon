@@ -2,20 +2,25 @@ cc_library(
     name = "bloom_filter",
     srcs = ["bloom_filter.cpp"],
     hdrs = ["bloom_filter.h"],
-    deps = ["//external:glog"],
+    deps = ["@glog"],
 )
 
 cc_library(
     name = "trie",
     hdrs = ["trie.h"],
-    deps = ["//external:glog"],
+    deps = ["@glog"],
 )
 
 cc_library(
     name = "count_min_sketch",
     srcs = ["count_min_sketch.cpp"],
     hdrs = ["count_min_sketch.h"],
-    deps = ["//external:glog"],
+    deps = ["@glog"],
+)
+
+cc_library(
+    name = "lru_cache",
+    hdrs = ["lru_cache.h"],
 )
 
 cc_test(
@@ -48,13 +53,25 @@ cc_test(
     ],
 )
 
+cc_test(
+    name = "lru_cache_test",
+    srcs = ["lru_cache_test.cpp"],
+    copts = [
+        "-Iexternal/gtest/include",
+    ],
+    deps = [
+        ":lru_cache",
+        "@gtest//:main",
+    ],
+)
+
 cc_binary(
     name = "sketching_main",
     srcs = ["sketching_main.cpp"],
     deps = [
         ":bloom_filter",
         ":count_min_sketch",
-        "//external:glog",
         "@com_google_absl//absl/strings:str_format",
+        "@glog",
     ],
 )

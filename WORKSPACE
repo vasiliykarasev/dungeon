@@ -11,6 +11,14 @@ http_archive(
     url = "https://github.com/google/googletest/archive/release-1.7.0.zip",
 )
 
+http_archive(
+    name = "glog",
+    strip_prefix = "glog-4cc89c9e2b452db579397887c37f302fb28f6ca1",
+    urls = [
+        "https://github.com/google/glog/archive/4cc89c9e2b452db579397887c37f302fb28f6ca1.tar.gz",
+    ],
+)
+
 git_repository(
     name = "com_github_gflags_gflags",
     commit = "28f50e0fed19872e0fd50dd23ce2ee8cd759338e",
@@ -20,17 +28,6 @@ git_repository(
 bind(
     name = "gflags",
     actual = "@com_github_gflags_gflags//:gflags",
-)
-
-git_repository(
-    name = "com_github_glog_glog",
-    commit = "3106945d8d3322e5cbd5658d482c9ffed2d892c0",
-    remote = "https://github.com/google/glog.git",
-)
-
-bind(
-    name = "glog",
-    actual = "@com_github_glog_glog//:glog",
 )
 
 git_repository(
