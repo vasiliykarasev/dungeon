@@ -1,0 +1,34 @@
+cc_library(
+    name = "task_queue",
+    srcs = ["task_queue.cpp"],
+    hdrs = ["task_queue.h"],
+    deps = ["@glog"],
+)
+
+cc_library(
+    name = "periodic_task",
+    srcs = ["periodic_task.cpp"],
+    hdrs = ["periodic_task.h"],
+    deps = ["@glog"],
+)
+
+cc_test(
+    name = "task_queue_test",
+    srcs = ["task_queue_test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":task_queue",
+        "@gtest//:main",
+    ],
+)
+
+cc_test(
+    name = "periodic_task_test",
+    srcs = ["periodic_task_test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":periodic_task",
+        "@glog",
+        "@gtest//:main",
+    ],
+)
