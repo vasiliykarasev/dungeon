@@ -1,4 +1,10 @@
 cc_library(
+    name = "lazy",
+    hdrs = ["lazy.h"],
+    deps = ["@glog"],
+)
+
+cc_library(
     name = "task_queue",
     srcs = ["task_queue.cpp"],
     hdrs = ["task_queue.h"],
@@ -28,6 +34,17 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         ":periodic_task",
+        "@glog",
+        "@gtest//:main",
+    ],
+)
+
+cc_test(
+    name = "lazy_test",
+    srcs = ["lazy_test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":lazy",
         "@glog",
         "@gtest//:main",
     ],
