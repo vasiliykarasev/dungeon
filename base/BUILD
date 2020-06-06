@@ -5,6 +5,11 @@ cc_library(
 )
 
 cc_library(
+    name = "enumerate",
+    srcs = ["enumerate.h"],
+)
+
+cc_library(
     name = "task_queue",
     srcs = ["task_queue.cpp"],
     hdrs = ["task_queue.h"],
@@ -16,6 +21,16 @@ cc_library(
     srcs = ["periodic_task.cpp"],
     hdrs = ["periodic_task.h"],
     deps = ["@glog"],
+)
+
+cc_test(
+    name = "enumerate_test",
+    srcs = ["enumerate_test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":enumerate",
+        "@gtest//:main",
+    ],
 )
 
 cc_test(
