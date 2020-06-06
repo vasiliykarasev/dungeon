@@ -19,6 +19,15 @@ http_archive(
     ],
 )
 
+# Eigen
+http_archive(
+    name = "eigen",
+    build_file = "eigen.BUILD",
+    sha256 = "3a66f9bfce85aff39bc255d5a341f87336ec6f5911e8d816dd4a3fdc500f8acf",
+    strip_prefix = "eigen-eigen-c5e90d9e764e",
+    url = "https://bitbucket.org/eigen/eigen/get/c5e90d9.tar.gz",
+)
+
 git_repository(
     name = "com_github_gflags_gflags",
     commit = "28f50e0fed19872e0fd50dd23ce2ee8cd759338e",
@@ -101,4 +110,10 @@ http_archive(
 bind(
     name = "protobuf",
     actual = "@com_google_protobuf//:protobuf",
+)
+
+new_local_repository(
+    name = "llvm",
+    build_file = "external/llvm.BUILD",
+    path = "/usr/lib/llvm-10/",
 )
