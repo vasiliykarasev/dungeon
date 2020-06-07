@@ -10,6 +10,7 @@ cc_library(
     ],
     copts = ["-Iexternal/eigen"],
     deps = [
+        "//base:enumerate",
         "@eigen",
         "@glog",
     ],

@@ -1,5 +1,6 @@
 #include "optimization/deferred_acceptance_impl.h"
 
+#include "base/enumerate.h"
 #include "glog/logging.h"
 #include "glog/stl_logging.h"
 
@@ -20,10 +21,9 @@ bool SolveGaleShapleySingleIteration(const Eigen::MatrixXf& cost,
   if (candidate_matches.empty()) {
     return false;
   }
-  for (const auto& pr : candidate_matches) {
-    float cost = pr.first;
-    int man_idx = std::get<0>(pr.second);
-    int woman_idx = std::get<1>(pr.second);
+  for (const auto& [cost, idx_pr] : candidate_matches) {
+    int man_idx = std::get<0>(idx_pr);
+    int woman_idx = std::get<1>(idx_pr);
 
     Proposee& woman = women[woman_idx];
     Proposer& man = men[man_idx];
@@ -67,8 +67,7 @@ std::multimap<float, std::pair<int, int>> ProposeCandidateMatches(
     const std::vector<Proposer>& proposers, const Eigen::MatrixXf& cost) {
   CHECK_EQ(proposers.size(), cost.rows());
   std::multimap<float, std::pair<int, int>> output;
-  for (size_t i = 0; i < proposers.size(); ++i) {
-    const auto& proposer = proposers[i];
+  for (const auto& [i, proposer] : enumerate(proposers)) {
     if (proposer.IsEngaged()) {
       continue;
     }
