@@ -12,6 +12,22 @@ cc_library(
 )
 
 cc_library(
+    name = "interval",
+    srcs = ["interval.h"],
+    deps = [],
+)
+
+cc_library(
+    name = "interval_tree",
+    srcs = ["interval_tree.cpp"],
+    hdrs = ["interval_tree.h"],
+    deps = [
+        ":interval",
+        "@glog",
+    ],
+)
+
+cc_library(
     name = "count_min_sketch",
     srcs = ["count_min_sketch.cpp"],
     hdrs = ["count_min_sketch.h"],
@@ -71,7 +87,19 @@ cc_binary(
     deps = [
         ":bloom_filter",
         ":count_min_sketch",
-        "@com_google_absl//absl/strings:str_format",
+        "@absl//absl/strings:str_format",
         "@glog",
+    ],
+)
+
+cc_test(
+    name = "interval_tree_test",
+    srcs = ["interval_tree_test.cpp"],
+    copts = [
+        "-Iexternal/gtest/include",
+    ],
+    deps = [
+        ":interval_tree",
+        "@gtest//:main",
     ],
 )

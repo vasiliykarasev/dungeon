@@ -6,6 +6,7 @@ cc_library(
     ),
     hdrs = glob([
         "include/**/*.h",
+        "include/*.h",
         "src/*.h"
     ]),
     copts = ["-Iexternal/gtest/include", "-Wno-sign-compare"],
