@@ -1,6 +1,7 @@
+notifications:
+  email: false
+
 dist: bionic
-# "Adapted" from 
-#   https://github.com/korfuri/bazel-travis/blob/master/.travis.yml
 addons:
   apt:
     sources:
