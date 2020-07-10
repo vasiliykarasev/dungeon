@@ -117,3 +117,12 @@ new_local_repository(
     build_file = "external/llvm.BUILD",
     path = "/usr/lib/llvm-10/",
 )
+
+# OpenCV is a local repository; not packaged here. On ubuntu, it can be
+# installed as:
+#   sudo apt-get install -y libopencv-dev
+new_local_repository(
+    name = "opencv",
+    build_file = "external/opencv.BUILD",
+    path = "/usr/",
+)
