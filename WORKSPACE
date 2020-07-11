@@ -118,11 +118,36 @@ new_local_repository(
     path = "/usr/lib/llvm-10/",
 )
 
-# OpenCV is a local repository; not packaged here. On ubuntu, it can be
-# installed as:
+# OpenCV is a local repository; not packaged here.
+# On ubuntu, it can be installed as:
 #   sudo apt-get install -y libopencv-dev
 new_local_repository(
     name = "opencv",
     build_file = "external/opencv.BUILD",
+    path = "/usr/",
+)
+
+# QT5 is a local repository; not packaged here.
+# On ubuntu, it can be installed as:
+#   TODO(vasiliy)
+new_local_repository(
+    name = "qt5",
+    build_file = "external/qt5.BUILD",
+    path = "/usr/",
+)
+
+# OpenGL is a local repository; not packaged here.
+new_local_repository(
+    name = "opengl",
+    build_file = "external/opengl.BUILD",
+    path = "/usr/",
+)
+
+# QGLViewer is a local repository; not packaged here.
+# On ubuntu, it can be installed as:
+#   sudo apt-get install -y libqglviewer-dev-qt5
+new_local_repository(
+    name = "qglviewer",
+    build_file = "external/qglviewer.BUILD",
     path = "/usr/",
 )
