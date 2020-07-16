@@ -12,6 +12,15 @@ cc_library(
 )
 
 cc_library(
+    name = "thread_pool",
+    srcs = ["thread_pool.cpp"],
+    hdrs = ["thread_pool.h"],
+    deps = [
+        "@glog",
+    ],
+)
+
+cc_library(
     name = "task_queue",
     srcs = ["task_queue.cpp"],
     hdrs = ["task_queue.h"],
@@ -52,6 +61,16 @@ cc_test(
     deps = [
         ":periodic_task",
         "@glog",
+        "@gtest//:main",
+    ],
+)
+
+cc_test(
+    name = "thread_pool_test",
+    srcs = ["thread_pool_test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":thread_pool",
         "@gtest//:main",
     ],
 )
