@@ -23,7 +23,7 @@ TEST(ThreadPoolTest, ThreadPoolWorks) {
   // values are correct.
   std::vector<float> values(4, 0.0f);
   ThreadPool pool(values.size());
-  for (int i = 0; i < values.size(); ++i) {
+  for (size_t i = 0; i < values.size(); ++i) {
     pool.Post([i, &values]() { values[i] += (i + 1); });
   }
   pool.Wait();

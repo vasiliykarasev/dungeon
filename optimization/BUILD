@@ -19,9 +19,8 @@ cc_library(
 cc_test(
     name = "deferred_acceptance_test",
     srcs = ["deferred_acceptance_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":deferred_acceptance",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )

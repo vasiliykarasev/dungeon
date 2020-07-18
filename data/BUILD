@@ -42,42 +42,36 @@ cc_library(
 cc_test(
     name = "bloom_filter_test",
     srcs = ["bloom_filter_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":bloom_filter",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "trie_test",
     srcs = ["trie_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":trie",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "count_min_sketch_test",
     srcs = ["count_min_sketch_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":count_min_sketch",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "lru_cache_test",
     srcs = ["lru_cache_test.cpp"],
-    copts = [
-        "-Iexternal/gtest/include",
-    ],
     deps = [
         ":lru_cache",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
@@ -95,11 +89,8 @@ cc_binary(
 cc_test(
     name = "interval_tree_test",
     srcs = ["interval_tree_test.cpp"],
-    copts = [
-        "-Iexternal/gtest/include",
-    ],
     deps = [
         ":interval_tree",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )

@@ -37,51 +37,46 @@ cc_library(
 cc_test(
     name = "enumerate_test",
     srcs = ["enumerate_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":enumerate",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "task_queue_test",
     srcs = ["task_queue_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":task_queue",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "periodic_task_test",
     srcs = ["periodic_task_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":periodic_task",
         "@glog",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "thread_pool_test",
     srcs = ["thread_pool_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":thread_pool",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
 
 cc_test(
     name = "lazy_test",
     srcs = ["lazy_test.cpp"],
-    copts = ["-Iexternal/gtest/include"],
     deps = [
         ":lazy",
         "@glog",
-        "@gtest//:main",
+        "@gtest//:gtest_main",
     ],
 )
